@@ -30,7 +30,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
   icon("linkedin",lib = "font-awesome"),
   tags$a(href="http://esmitperez.github.io/Ujko-ng/index.html","esmitperez"),
   tags$div("Date Created: March 4th 2015"),
-  helpText("Note: This is a Shiny-based proof of concept based on my Ujko-ng project (see my GitHub repo). This application was created for the Developing Data Products course project on Coursera. When the province changes its cantons are looked up in a data.frame originally created from a .csv file."),
+  helpText("Note: When the province changes its cantons are looked up in a data.frame originally created from a .csv file. This is a Shiny-based proof of concept based on my Ujko-ng project (see my GitHub repo). This application was created for the Developing Data Products course project on Coursera."),
   includeCSS("www/css/crmaps.css"),
   
   # get current styling data
