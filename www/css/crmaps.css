@@ -1,0 +1,96 @@
+/*
+Autor: Esmit Pérez
+Twitter: @esmitperez
+Fecha: Jun 2013
+
+Copyright (c) 2013 Esmit Pérez (@esmiterez)
+http://www.apache.org/licenses/LICENSE-2.0
+*/
+
+
+@import url(http://fonts.googleapis.com/css?family=Average+Sans|Alef);
+@import url(http://fonts.googleapis.com/css?family=Allura);
+
+@import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #ad1d28;
+}
+
+
+path[data-prov="1"] {
+	fill: #ffffd4;
+}
+
+path[data-prov="2"] {
+	fill: #ffffd4;
+}
+
+path[data-prov="3"] {
+	fill: #ffffd4;
+}
+
+path[data-prov="4"] {
+	fill: #ffffd4;
+}
+
+path[data-prov="5"] {
+	fill: #ffffd4;
+}
+
+path[data-prov="6"] {
+	fill: #ffffd4;
+}
+
+path[data-prov="7"] {
+	fill: #ffffd4;
+}
+
+.distrito {
+	/*fill: #000;*/
+	fill-opacity: 1;
+	stroke:white;
+	stroke-width:15;
+	stroke-opacity:1;
+	fill-rule:evenodd;
+}
+
+.canton_hover {
+	fill: cornflowerblue;
+	stroke:1px;
+}
+
+svg.CRMap {
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            background: white;
+            border-radius: 3px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: auto;
+            margin-bottom: auto;
+            -moz-box-shadow:0 0 10px 5px #A9CFFF;
+            -webkit-box-shadow:0 0 5px 10px #A9CFFF;
+            box-shadow:0 0 10px 5px #A9CFFF;
+        }
+
+
+text
+{
+	font-family: 'Average Sans', sans-serif;
+	font-size:0.3rem;
+	fill:yellow;
+	text-anchor:middle;
+	pointer-events:none;
+	dominant-baseline:middle;
+	baseline-shift=-30%;
+	visibility:hidden;
+ }
+
+
+/*http://angular-ui.github.io/bootstrap/*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
