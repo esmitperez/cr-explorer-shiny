@@ -38,13 +38,12 @@ shinyServer(function(input, output,session) {
         })
         
         listToShow <- reactive({
-                l <- ddply(distritos[distritos$pCode==1,],~canton,summarise,sum(!is.na(canton)))
+                l <- ddply(distritos[distritos$pCode==provId,],~canton,summarise,sum(!is.na(canton)))
                 colnames(l) <- c("Cantons","District Count")
                 l
         })
         
-        #output$stylesForMap <-  renderText(paste0('<style>path[data-prov="',provId,'"] {fill:#cc4c02}</style>'))
-        output$stylesForMap <-  renderText(colorTable()$css)
+        output$stylesForMap <- renderText(colorTable()$css)
         output$cantonList <-  renderTable({listToShow()},label="Cantons")
   })
 
