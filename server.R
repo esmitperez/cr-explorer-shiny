@@ -6,13 +6,16 @@
 #
 
 library(shiny)
+library(RColorBrewer)
 
 distritos <<- read.csv("distritos.csv",fileEncoding="UTF-16", header = T)
 # determine province ID
 distritos$pCode <- substr(x = distritos$coddist, start = 1,stop = 1)
-distritos$cCode <- substr(x = distritos$coddist, start = 1,stop = 3)
+distritos$cCode <- as.numeric(substr(x = distritos$coddist, start = 2,stop = 3))
 cat("Created look up table...")
 
+# See http://colorbrewer2.org/ for more info
+cloropethpalette<-brewer.pal(9,"Purples")
 
 shinyServer(function(input, output,session) {
 
@@ -22,16 +25,26 @@ shinyServer(function(input, output,session) {
        
         updateSelectInput(session,"cantonId",choices=s_options)
         provId <- distritos[distritos$provincia==input$provinciaId, "pCode"][1]
-        output$stylesForMap <-  renderText(paste0('<style>path[data-prov="',
-                                       provId,
-                                       '"] {fill:#cc4c02}</style>'))
+       
         # remove dups, filter all cantons
-        listToShow <- reactive({
-                               l <- data.frame(unique(distritos[distritos$pCode==provId,c("canton")]))
-                               colnames(l) <- c("Cantons")
-                               l
+        colorTable <- reactive({
+                l <- ddply(distritos[distritos$pCode==provId,],~canton+pCode+cCode,summarise,
+                           n=sum(!is.na(canton))
+                           #,paste0('<style>path[data-canton="',cCode,'"][data-prov="',pCode,'"] {fill:#cc4c02}</style>')
+                           )
+                l <- cbind(l,colorCode=rep(cloropethpalette,length.out=nrow(l)))
+                l$css <- paste0('<style>path[data-canton="',l$cCode,'"][data-prov="',l$pCode,'"] {fill:',l$color,'}</style>')
+                l
         })
         
+        listToShow <- reactive({
+                l <- ddply(distritos[distritos$pCode==1,],~canton,summarise,sum(!is.na(canton)))
+                colnames(l) <- c("Cantons","District Count")
+                l
+        })
+        
+        #output$stylesForMap <-  renderText(paste0('<style>path[data-prov="',provId,'"] {fill:#cc4c02}</style>'))
+        output$stylesForMap <-  renderText(colorTable()$css)
         output$cantonList <-  renderTable({listToShow()},label="Cantons")
   })
 

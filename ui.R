@@ -34,6 +34,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
   includeCSS("www/css/crmaps.css"),
   
   # get current styling data
+  #textOutput("stylesForMap"),
   htmlOutput("stylesForMap"),
   
   # Sidebar with a slider input for number of bins
