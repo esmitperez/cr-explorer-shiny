@@ -7,6 +7,7 @@
 
 library(shiny)
 library(RColorBrewer)
+library(plyr)
 
 distritos <<- read.csv("distritos.csv",fileEncoding="UTF-16", header = T)
 # determine province ID
@@ -33,6 +34,7 @@ shinyServer(function(input, output,session) {
                            #,paste0('<style>path[data-canton="',cCode,'"][data-prov="',pCode,'"] {fill:#cc4c02}</style>')
                            )
                 l <- cbind(l,colorCode=rep(cloropethpalette,length.out=nrow(l)))
+                #maybe use sapply+ function??
                 l$css <- paste0('<style>path[data-canton="',l$cCode,'"][data-prov="',l$pCode,'"] {fill:',l$color,'}</style>')
                 l
         })
