@@ -29,7 +29,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
   tags$a(href="https://github.com/esmitperez/Ujko-ng","esmitperez"),
   icon("linkedin",lib = "font-awesome"),
   tags$a(href="http://esmitperez.github.io/Ujko-ng/index.html","esmitperez"),
-  tags$div("Date Created: March 4th 2015"),
+  tags$div("Date Last Updated: July 22nd 2015"),
   helpText("Change the province using the provided dropdown, it is then highlighted in the map and its cantons will be loaded from a data.frame created from a .csv file. This is a Shiny based proof of concept of my Ujko-ng project (see my GitHub repo). This application was created for the Developing Data Products course project on Coursera."),
   includeCSS("www/css/crmaps.css"),
   
